@@ -35,7 +35,7 @@ export COMMON_SRCS	 = bl.c
 #
 # Bootloaders to build
 #
-TARGETS			 = px4fmu_bl px4fmuv2_bl px4flow_bl stm32f4discovery_bl px4io_bl aerocore_bl mavstation_bl
+TARGETS			 = px4fmu_bl px4fmuv2_bl px4flow_bl stm32f4discovery_bl px4io_bl aerocore_bl mavstation_bl crazyflie_bl
 
 # px4io_bl px4flow_bl
 
@@ -67,6 +67,9 @@ px4flow_bl: $(MAKEFILE_LIST) $(LIBOPENCM3)
 
 aerocore_bl: $(MAKEFILE_LIST) $(LIBOPENCM3)
 	make -f Makefile.f4 TARGET=aerocore INTERFACE=USB BOARD=AEROCORE USBDEVICESTRING="\\\"Gumstix BL AEROCORE\\\"" USBPRODUCTID="0x1001"
+
+crazyflie_bl: $(MAKEFILE_LIST) $(LIBOPENCM3)
+	make -f Makefile.f4 TARGET=crazyflie INTERFACE=USB BOARD=CRAZYFLIE USBDEVICESTRING="\\\"Crazyflie 2.0 PX4\\\"" USBPRODUCTID="0x5463"
 
 # Default bootloader delay is *very* short, just long enough to catch
 # the board for recovery but not so long as to make restarting after a 
